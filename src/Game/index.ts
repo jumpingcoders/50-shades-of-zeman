@@ -80,7 +80,7 @@ export default class Game extends Timeline {
         private _controlls: Controls,
     ) {
         super();
-        this.frame();
+        this._frame();
 
         /*setInterval(()=>{
             if(Math.random()<1/100){
@@ -90,7 +90,7 @@ export default class Game extends Timeline {
         },100);*/
     }
 
-    frame() {
+    private _frame() {
         const lastNow = performance.now();
         requestAnimationFrame((now: number) => {
             let ms = performance.now() - lastNow;
@@ -99,13 +99,19 @@ export default class Game extends Timeline {
             const x = Math.sin(this.ms/1000/10*Math.PI);
             this.musicSpeed = Math.abs(x*4);
             this.zemanRotation += x;
-
-            this._sceneDataModel.zemanStomach = this._controlls.angle;
-            this._sceneDataModel.zemanPerson = Math.sin(this.zemanRotation/100)*45;
-            this._sceneDataModel.alcohol = this.ms/1000/60/10;
+            this._writeToSceneDataModel();
             //this.speed *= Math.pow(.5,ms/1000/60);
             this.tick(ms);
-            this.frame();
+            this._frame();
         })
+    }
+
+
+    private _writeToSceneDataModel(){
+
+        this._sceneDataModel.zemanStomach = this._controlls.angle;
+        this._sceneDataModel.zemanPerson = Math.sin(this.zemanRotation/100)*45;
+        this._sceneDataModel.alcohol = this.ms/1000/60/10;
+
     }
 }
