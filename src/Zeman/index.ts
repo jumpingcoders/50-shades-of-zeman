@@ -76,5 +76,8 @@ export default class Zeman extends TimeLine {
         this._sceneDataModel.alcohol = this.alcohol;
         this._sceneDataModel.score = Math.floor(this.ms/1000);
 
+
+        this.musicSpeed = .5+((this._sceneDataModel.zemanPerson+45)/90);
+
     }
 }
