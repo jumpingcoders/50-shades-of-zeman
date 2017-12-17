@@ -3,12 +3,12 @@ export default class Controls {
 
     constructor(el: Window) {
         if ('DeviceOrientationEvent' in el) {
-            el.addEventListener('deviceorientation', (event) => this.handleOrientation(event));
+            el.addEventListener('deviceorientation', (event) => this._handleOrientation(event));
         }
-        el.addEventListener('keydown', (event) => this.handleKeyPress(event));
+        el.addEventListener('keydown', (event) => this._handleKeyPress(event));
     }
 
-    handleOrientation(event) {
+    private _handleOrientation(event) {
         if (event.gamma < -45) {
             this.angle = -45;
         } else if (event.gamma > 45) {
@@ -18,7 +18,7 @@ export default class Controls {
         }
     }
 
-    handleKeyPress(event) {
+    private _handleKeyPress(event) {
         switch(event.keyCode) {
             case 37:
                 this.angle = Math.max(this.angle - 2, -45);
