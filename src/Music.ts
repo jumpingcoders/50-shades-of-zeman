@@ -8,7 +8,7 @@ export default class Music {
         this.el.src = `/assets/sounds/${name}.mp3`;
         this.el.play();
 
-        setInterval(function() {
+        setInterval(()=>{
             this.updatePlayerSpeed();
         }, 200);
     }
