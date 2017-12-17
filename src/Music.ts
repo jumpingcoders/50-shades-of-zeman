@@ -1,9 +1,9 @@
-import Game from './Game/';
+import zeman from './Zeman';
 
 export default class Music {
     public el: HTMLAudioElement;
 
-    constructor(name:string,private _game: Game) {
+    constructor(name:string,private _zeman: zeman) {
         this.el = new Audio;
         this.el.src = `/assets/sounds/${name}.mp3`;
         this.el.play();
@@ -14,7 +14,7 @@ export default class Music {
     }
 
     updatePlayerSpeed() {
-        let speed = this._game.musicSpeed;
+        let speed = this._zeman.musicSpeed;
         console.log(speed);
         if (speed < .5) speed = .5;
         if (speed > 3) speed = 3;

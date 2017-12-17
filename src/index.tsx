@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import Game from './Game/';
+import Zeman from './Zeman';
 import Music from './Music';
 import Controls from './Controls';
 import SceneDataModel from './SceneDataModel';
@@ -12,8 +12,8 @@ const sceneElement = document.getElementById("scene") as any;
 
 
 const controls = new Controls(window);
-const game = new Game(sceneDataModel,controls);
-let music = new Music('libuse',game);
+const zeman = new Zeman(sceneDataModel,controls);
+let music = new Music('libuse',zeman);
 
 
 
