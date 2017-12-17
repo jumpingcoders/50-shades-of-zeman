@@ -15,7 +15,6 @@ export default class Music {
 
     updatePlayerSpeed() {
         let speed = this._zeman.musicSpeed;
-        console.log(speed);
         if (speed < .5) speed = .5;
         if (speed > 3) speed = 3;
         this.el.playbackRate = speed;
