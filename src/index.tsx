@@ -11,11 +11,9 @@ const sceneDataModel = new SceneDataModel();
 const sceneElement = document.getElementById("scene") as any;
 
 
-
-const game = new Game(sceneDataModel);
+const controls = new Controls(window);
+const game = new Game(sceneDataModel,controls);
 let music = new Music('libuse',game);
-let controls = new Controls(window);
-
 
 
 

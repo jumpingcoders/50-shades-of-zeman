@@ -1,4 +1,5 @@
 import SceneDataModel from '../SceneDataModel';
+import Controls from '../Controls';
 
 class Timeline {
     public ms: number = 0;
@@ -75,7 +76,8 @@ export default class Game extends Timeline {
     public musicSpeed: number = 1;
 
     constructor(
-        private _sceneDataModel: SceneDataModel
+        private _sceneDataModel: SceneDataModel,
+        private _controlls: Controls,
     ) {
         super();
         this.frame();
@@ -98,6 +100,7 @@ export default class Game extends Timeline {
             this.musicSpeed = Math.abs(x*4);
             this.zemanRotation += x;
 
+            this._sceneDataModel.zemanStomach = this._controlls.angle;
             this._sceneDataModel.zemanPerson = Math.sin(this.zemanRotation/100)*45;
             this._sceneDataModel.alcohol = this.ms/1000/60/10;
             //this.speed *= Math.pow(.5,ms/1000/60);
