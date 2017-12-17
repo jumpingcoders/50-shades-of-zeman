@@ -27,7 +27,7 @@ export default class Zeman extends TimeLine {
                 this.alcohol+= amount;
             }
 
-            this.alcohol *= 0.9;
+            this.alcohol *= 0.8;
             /*const probabilityOdDrinking = Math.pow(Math.max(0,(-1/this.ms)+1),100);
             if(Math.random()<probabilityOdDrinking){
 
@@ -72,7 +72,7 @@ export default class Zeman extends TimeLine {
     private _writeToSceneDataModel(){
 
         this._sceneDataModel.zemanStomach = this._controlls.angle;
-        this._sceneDataModel.zemanPerson = Math.sin(this._superRotation/100)*45;
+        this._sceneDataModel.zemanPerson = Math.sin((this._superRotation+this._controlls.angle)/100)*45;
         this._sceneDataModel.alcohol = this.alcohol;
         this._sceneDataModel.score = Math.floor(this.ms/1000);
 
