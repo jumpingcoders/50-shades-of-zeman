@@ -1,0 +1,17 @@
+{
+  "name": "50-shades-of-zeman",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react-scripts-ts": "2.8.0"
+  },
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.53"
+  }
+}
