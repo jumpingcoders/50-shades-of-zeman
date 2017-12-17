@@ -6,7 +6,7 @@ class Timeline {
     }
 }
 
-
+/*
 class GameSpeed extends Timeline {
 
     public vomitFactors: VomitFactor[] = [];
@@ -16,7 +16,7 @@ class GameSpeed extends Timeline {
         setInterval(()=>{
 
             this.vomitFactors.push(new VomitFactor(
-                Math.random()*4,
+                Math.random()*10,
                 Math.random()*4
             ));
         },100);
@@ -31,12 +31,12 @@ class GameSpeed extends Timeline {
     }
 
     getSpeed(): number {
-        return this.getBaseSpeed() + this.getFactorsSpeed();
+        return this.getBaseSpeed() + this.getFactorsSpeed()+0.5;
     }
 
 
     getBaseSpeed(): number {
-        return Math.pow(0.5, (this.ms / 6000));
+        return Math.pow(0.5, (this.ms / ( 1000 * 60 )));
     }
 
     getFactorsSpeed(): number {
@@ -64,26 +64,33 @@ class VomitFactor extends Timeline {
     }
 
 
-}
+}*/
 
 
-export default class Game {
-    public gameSpeed: GameSpeed = new GameSpeed;
+export default class Game extends Timeline {
+
+    public speed: number = 1;
 
     constructor() {
+        super();
         this.frame();
+
+        /*setInterval(()=>{
+            if(Math.random()<1/100){
+                console.log('Becher!');
+                this.speed = 2;
+            }
+        },100);*/
     }
 
     frame() {
         const lastNow = performance.now();
         requestAnimationFrame((now: number) => {
             const ms = performance.now() - lastNow;
-            this.gameSpeed.tick(ms);
+            this.speed = Math.abs(Math.sin(this.ms/1000/10*Math.PI)*4);
+            //this.speed *= Math.pow(.5,ms/1000/60);
+            this.tick(ms);
             this.frame();
         })
-    }
-
-    getSpeed() {
-        return this.gameSpeed.getSpeed();
     }
 }

@@ -1,4 +1,4 @@
-import Game from './Game';
+import Game from './Game/';
 import './index.css';
 
 const game = new Game();
@@ -13,7 +13,11 @@ class Music {
     }
 
     updatePlayerSpeed() {
-        this.el.playbackRate = game.getSpeed();
+        let speed = game.speed;
+        console.log(speed);
+        if(speed<.5)speed=.5;
+        if(speed>3)speed=3;
+        this.el.playbackRate = speed;
     }
 }
 
