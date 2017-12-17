@@ -55,7 +55,7 @@ export default class Zeman extends TimeLine {
             }*/
 
 
-            this._superRotation += this.alcohol*100*(Math.random()-.4);//Math.sin(this.ms/1000*Math.PI)*this.alcohol*ms/1000;
+            this._superRotation += this.alcohol*1000*(Math.random()-.4);//Math.sin(this.ms/1000*Math.PI)*this.alcohol*ms/1000;
 
 
             //const x = Math.sin(this.ms/1000/10*Math.PI);
