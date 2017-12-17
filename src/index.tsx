@@ -13,7 +13,7 @@ class Music {
     }
 
     updatePlayerSpeed() {
-        let speed = game.speed;
+        let speed = game.musicSpeed;
         console.log(speed);
         if(speed<.5)speed=.5;
         if(speed>3)speed=3;

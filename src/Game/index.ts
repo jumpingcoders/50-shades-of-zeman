@@ -69,7 +69,8 @@ class VomitFactor extends Timeline {
 
 export default class Game extends Timeline {
 
-    public speed: number = 1;
+    public zemanRotation: number = 0;
+    public musicSpeed: number = 1;
 
     constructor() {
         super();
@@ -86,8 +87,12 @@ export default class Game extends Timeline {
     frame() {
         const lastNow = performance.now();
         requestAnimationFrame((now: number) => {
-            const ms = performance.now() - lastNow;
-            this.speed = Math.abs(Math.sin(this.ms/1000/10*Math.PI)*4);
+            let ms = performance.now() - lastNow;
+            ms = ms * (Math.random()+.5);
+
+            const x = Math.sin(this.ms/1000/10*Math.PI);
+            this.musicSpeed = Math.abs(x*4);
+            this.zemanRotation += x;
             //this.speed *= Math.pow(.5,ms/1000/60);
             this.tick(ms);
             this.frame();
