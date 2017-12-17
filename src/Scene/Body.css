@@ -1,0 +1,74 @@
+body {
+    background: black;
+}
+
+.playground {
+    position: absolute;
+    height: 100vh;
+    background: url('/assets/sprites/background.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.zeman {
+    width: 300px;
+    height: 500px;
+    position: relative;
+    margin-left: 300px;
+}
+
+.top {
+    position: absolute;
+    width: 300px;
+    height: 500px;
+}
+
+.head {
+    position: absolute;
+    width: 25%;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}
+
+.body {
+    position: absolute;
+    width: 60%;
+    left: 50%;
+    top: 11%;
+    transform: translateX(calc((50% + 8px) * -1));
+}
+
+.larm {
+    position: absolute;
+    width: 18%;
+    top: 18%;
+    left: 10%;
+    transform: rotate(20deg)
+}
+
+.rarm {
+    position: absolute;
+    width: 18%;
+    top: 18%;
+    right: 12%;
+    transform: rotate(-50deg)
+}
+
+.lleg {
+}
+
+.lileg {
+    width: 25%;
+    position: absolute;
+    top: 45%;
+    left: 20%;
+}
+
+.rileg {
+    width: 25%;
+    position: absolute;
+    top: 45%;
+    right: 22%;
+}

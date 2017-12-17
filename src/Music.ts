@@ -6,6 +6,7 @@ export default class Music {
     constructor(name:string,private _zeman: zeman) {
         this.el = new Audio;
         this.el.src = `/assets/sounds/${name}.mp3`;
+        this.el.loop = true;
         this.el.play();
 
         setInterval(()=>{
