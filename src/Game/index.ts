@@ -1,11 +1,52 @@
+import TimeLine from './TimeLine';
 import SceneDataModel from '../SceneDataModel';
 import Controls from '../Controls';
 
-class Timeline {
-    public ms: number = 0;
 
-    tick(ms: number) {
-        this.ms += ms;
+export default class Game extends TimeLine {
+
+    public zemanRotation: number = 0;
+    public musicSpeed: number = 1;
+
+    constructor(
+        private _sceneDataModel: SceneDataModel,
+        private _controlls: Controls,
+    ) {
+        super();
+        this._frame();
+
+        /*setInterval(()=>{
+         if(Math.random()<1/100){
+         console.log('Becher!');
+         this.speed = 2;
+         }
+         },100);*/
+    }
+
+    private _frame() {
+        const lastNow = performance.now();
+        requestAnimationFrame((now: number) => {
+            let ms = performance.now() - lastNow;
+            ms = ms * (Math.random()+.5);
+
+            const x = Math.sin(this.ms/1000/10*Math.PI);
+            this.musicSpeed = Math.abs(x*4);
+            this.zemanRotation += x;
+            this._writeToSceneDataModel();
+            //this.speed *= Math.pow(.5,ms/1000/60);
+            this.tick(ms);
+            this._frame();
+        })
+    }
+
+
+    private _writeToSceneDataModel(){
+
+        this._sceneDataModel.zemanStomach = this._controlls.angle;
+        this._sceneDataModel.zemanPerson = Math.sin(this.zemanRotation/100)*45;
+        this._sceneDataModel.alcohol = this.ms/1000/60/10;
+        this._sceneDataModel.score = Math.floor(this.ms/1000);
+
     }
 }
 
@@ -69,49 +110,3 @@ class VomitFactor extends Timeline {
 
 }*/
 
-
-export default class Game extends Timeline {
-
-    public zemanRotation: number = 0;
-    public musicSpeed: number = 1;
-
-    constructor(
-        private _sceneDataModel: SceneDataModel,
-        private _controlls: Controls,
-    ) {
-        super();
-        this._frame();
-
-        /*setInterval(()=>{
-            if(Math.random()<1/100){
-                console.log('Becher!');
-                this.speed = 2;
-            }
-        },100);*/
-    }
-
-    private _frame() {
-        const lastNow = performance.now();
-        requestAnimationFrame((now: number) => {
-            let ms = performance.now() - lastNow;
-            ms = ms * (Math.random()+.5);
-
-            const x = Math.sin(this.ms/1000/10*Math.PI);
-            this.musicSpeed = Math.abs(x*4);
-            this.zemanRotation += x;
-            this._writeToSceneDataModel();
-            //this.speed *= Math.pow(.5,ms/1000/60);
-            this.tick(ms);
-            this._frame();
-        })
-    }
-
-
-    private _writeToSceneDataModel(){
-
-        this._sceneDataModel.zemanStomach = this._controlls.angle;
-        this._sceneDataModel.zemanPerson = Math.sin(this.zemanRotation/100)*45;
-        this._sceneDataModel.alcohol = this.ms/1000/60/10;
-
-    }
-}
